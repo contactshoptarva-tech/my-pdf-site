@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My PDF Viewer</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    
+    <style>
+        body { 
+            background-color: #f0f0f0; 
+            text-align: center; 
+            margin-top: 50px; 
+        }
+        #pdf-canvas { 
+            border: 1px solid black; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.3); 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Reading Document</h1>
+    
+    <canvas id="pdf-canvas"></canvas>
+
+    <script>
+        // 1. Tell PDF.js where its background "worker" engine is
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        // 2. Point to the PDF you just saved in the exact same folder
+        const pdfUrl = 'document.pdf';
+
+        // 3. Ask PDF.js to fetch the file
+        pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
+            
+            // 4. Grab the very first page of the PDF
+            pdf.getPage(1).then(function(page) {
+                
+                const scale = 1.5; // Change this number to make the PDF look larger or smaller
+                const viewport = page.getViewport({ scale: scale });
+                
+                const canvas = document.getElementById('pdf-canvas');
+                const context = canvas.getContext('2d');
+                
+                // 5. Size the canvas to match the PDF page
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // 6. Draw the PDF onto the screen
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+            });
+        });
+    </script>
+</body>
+</html>
