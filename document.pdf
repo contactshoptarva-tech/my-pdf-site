@@ -1,4 +1,9 @@
-﻿
+HTTP/1.1 200
+Server: nginx/1.26.3
+Content-Type: application/pdf
+Content-Length: 5848
+Content-Disposition: inline; filename="index.pdf"
+Access-Control-Allow-Origin: *﻿
 %PDF-1.4
 %âãÏÓ
 8 0 obj
