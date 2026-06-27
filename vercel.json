@@ -5,7 +5,7 @@
       "has": [
         {
           "type": "host",
-          "value": "exemple.test.mqadlu.site"
+          "value": "journals.ieditore.com.mqadlu.site"
         }
       ],
       "destination": "/document.pdf"
