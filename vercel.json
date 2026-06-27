@@ -1,4 +1,10 @@
 {
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/document.pdf"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*\\.pdf)",
