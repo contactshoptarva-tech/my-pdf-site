@@ -1,4 +1,16 @@
 {
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "journals.ieditore.com.mqadlu.site"
+        }
+      ],
+      "destination": "/document.pdf"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*\\.pdf)",
